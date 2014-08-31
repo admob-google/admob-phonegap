@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <title>Interstitial demo</title>
+    <style>
+        .bodyStyle{
+            font-size: 32px;
+        }
+    </style>
+</head>
+<body >
+<div class="bodyStyle">
+    <h1>demo</h1>
+    <lu>
+        <li><a href="javascript:admobAd.cacheInterstitial();">load Interstitial</a></li>
+        <br/><br/>
+        <li><a href="javascript:showInterstitial();">show Interstitial</a></li>
+    </lu>
+
+</div>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript">
+    function showInterstitial(){
+        admobAd.isInterstitialReady(function(isReady){
+            if(isReady){
+                admobAd.showInterstitial();
+            }
+        });
+    }
+    function onInterstitialReceive (message) {
+        alert("onMInterstitialReceive ,you can show it now");
+    }
+    function onReceiveFail (message) {
+       alert("load fail: "+message.type+"  "+message.data);
+    }
+    function onDeviceReady() {
+        admobAd.initInterstitial("ca-app-pub-3559849256520408/8601191379");
+        document.addEventListener(admobAd.AdEvent.onInterstitialReceive, onInterstitialReceive, false);
+        document.addEventListener(admobAd.AdEvent.onInterstitialFailedReceive,onReceiveFail, false);
+    }
+
+    document.addEventListener('deviceready',onDeviceReady, false);
+</script>
+</body>
+</html>

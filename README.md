@@ -3,7 +3,7 @@
 
 admob phonegap(cordova) plugin，support ios and android<br/>
 build base on phonegap 3.4 or cordova 3.5 ,admob ios sdk 6.10.0 ,admob google play service 4.5<br/>
-home:https://github.com/jokenike/phonegap-admob<br/>
+home:https://github.com/admob-google/admob-phonegap<br/>
 
 phonegap:http://docs.phonegap.com/en/edge/guide_cli_index.md.html#The%20Command-line%20Interface  <br/>
 
