@@ -23,13 +23,14 @@
         <br/>
         <li><a href="javascript:admobAd.showBanner(admobAd.AD_POSITION.BOTTOM_CENTER);">show banner</a></li>
         <br/>
+        <li><a href="javascript:admobAd.showBannerAbsolute(0,50);">show banner absolute</a></li>
+        <br/>
         <li><a href="javascript:admobAd.hideBanner()">hide banner</a></li>
     </lu>
 
 </div>
  <div id="alertdiv"/>
 <script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript" src="js/json2.js"></script>
 <script type="text/javascript">
     function showInterstitial(){
         admobAd.isInterstitialReady(function(isReady){
@@ -46,8 +47,8 @@
         document.getElementById("alertdiv").innerHTML="load fail: "+message.type+"  "+message.data;
     }
     function onDeviceReady() {
-        admobAd.initInterstitial("ca-app-pub-3559849256520408/8601191379");//ios banner id
-        admobAd.initBanner("ca-app-pub-3559849256520408/8220061779",admobAd.AD_SIZE.BANNER.width,admobAd.AD_SIZE.BANNER.height);//ios Interstitial
+        admobAd.initInterstitial("ca-app-pub-1738093038576474/2316276747");//ios banner id
+        admobAd.initBanner("ca-app-pub-1738093038576474/9839543541",admobAd.AD_SIZE.BANNER.width,admobAd.AD_SIZE.BANNER.height);//ios Interstitial
         document.addEventListener(admobAd.AdEvent.onInterstitialReceive, onInterstitialReceive, false);
         document.addEventListener(admobAd.AdEvent.onInterstitialFailedReceive,onReceiveFail, false);
         document.addEventListener(admobAd.AdEvent.onBannerFailedReceive,onReceiveFail, false);

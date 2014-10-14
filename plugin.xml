@@ -2,12 +2,12 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="com.admob.AdmobPlugin"
-        version="1.0.0">
+        version="1.5.0">
     <name>AdmobPlugin</name>
     <keywords>ad,admob,google,google-play-service,iad,flurry,device,adwhirl</keywords>
     <description>
     Admob SDK Plugin for phonegap and cordova ,support ios and android,support admob v1 and admob v2
-        project home:https://github.com/robootcome/phonegap-admob<br/>
+        project home:https://github.com/admob-google/admob-phonegap<br/>
 		google code:http://code.google.com/p/admob-phonegap/ 
     </description>
     <license>Apache 2.0 License</license>
@@ -42,7 +42,9 @@
         <header-file  src="src/ios/AdmobAdPlugin.h"/>
     <!--    <framework src="src/ios/AdmobMobAPI.framework" custom="true"/>-->
  <framework src="src/ios/AdmobAPI.framework" custom="true"/>
-
+ 
+  		<framework src="EventKit.framework"/>
+        <framework src="EventKitUI.framework"/>
         <framework src="StoreKit.framework"/>
         <framework src="AdSupport.framework"/>
         <framework src="MessageUI.framework"/>
