@@ -6,8 +6,8 @@ build base on phonegap 3.4 or cordova 3.5 ,admob ios sdk 6.10.0 ,admob google pl
 home:https://github.com/admob-google/admob-phonegap<br/>
 phonegap:http://docs.phonegap.com/en/edge/guide_cli_index.md.html#The%20Command-line%20Interface  <br/>
 
-### new version location
-https://github.com/admob-google/admob-cordova
+### new version 
+this plugin is depressed,please use the new version https://github.com/admob-google/admob-cordova
 
 ###how to install google admob phonegap plugin?
 use the cordova command<br/>
