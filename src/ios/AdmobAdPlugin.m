@@ -5,7 +5,7 @@
 @synthesize admobAPI;
 #pragma mark   private util Function------------------
 -(void) fireEvent:(NSString*) eventType withEventData:(NSString*) jsonData{
-    NSString *js =@"cordova.fireDocumentEvent('%@',"@"{ 'data': '%@' });";
+    NSString *js =@"cordova.fireDocumentEvent('%@',{ 'data': '%@' });";
     NSString *json=[NSString stringWithFormat:js,eventType,jsonData];
     [self writeJavascript:json];
 }

@@ -47,8 +47,8 @@
         document.getElementById("alertdiv").innerHTML="load fail: "+message.type+"  "+message.data;
     }
     function onDeviceReady() {
-        admobAd.initInterstitial("ca-app-pub-1738093038576474/2316276747");//ios banner id
-        admobAd.initBanner("ca-app-pub-1738093038576474/9839543541",admobAd.AD_SIZE.BANNER.width,admobAd.AD_SIZE.BANNER.height);//ios Interstitial
+        admobAd.initInterstitial("institial id");//ios banner id
+        admobAd.initBanner("admob banner id",admobAd.AD_SIZE.BANNER.width,admobAd.AD_SIZE.BANNER.height);//ios Interstitial
         document.addEventListener(admobAd.AdEvent.onInterstitialReceive, onInterstitialReceive, false);
         document.addEventListener(admobAd.AdEvent.onInterstitialFailedReceive,onReceiveFail, false);
         document.addEventListener(admobAd.AdEvent.onBannerFailedReceive,onReceiveFail, false);

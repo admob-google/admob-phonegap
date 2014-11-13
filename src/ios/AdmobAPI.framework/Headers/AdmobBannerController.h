@@ -6,7 +6,7 @@
 @class AdmobAPI;
 @interface AdmobBannerController : UIViewController <GADBannerViewDelegate>{
     CGSize adSize;
-    int _position;//0表示绝对位置
+    int _position;//0 abs position
     int _targetX;
     int _targetY;
 }

@@ -36,14 +36,14 @@ var app = {
         var errorCreateBannerView = function (message) {
             console.log("create banner fail " + message);
         };
-        admobAd.initBanner("ca-app-pub-1738093038576474/9839543541", admobAd.AD_SIZE.BANNER.width, admobAd.AD_SIZE.BANNER.height, successCreateBannerView, errorCreateBannerView);
+        admobAd.initBanner("banner id", admobAd.AD_SIZE.BANNER.width, admobAd.AD_SIZE.BANNER.height, successCreateBannerView, errorCreateBannerView);
     },
 
     addInterstitial: function () {
         var successCreateInterstitial = function () {
             admobAd.cacheInterstitial();
         };
-        admobAd.initInterstitial("ca-app-pub-1738093038576474/2316276747", successCreateInterstitial);
+        admobAd.initInterstitial("institial id", successCreateInterstitial);
     },
 
     showInterstitial: function () {

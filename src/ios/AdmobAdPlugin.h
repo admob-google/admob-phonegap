@@ -1,11 +1,3 @@
-//
-//  BaiduAdPlugin.h
-//  hello
-//
-//  Created by zhouyingke on 14-6-7.
-//
-//
-
 #import "Cordova/CDV.h"
 #import <AdmobAPI/AdmobAPI.h>
 #import <AdmobAPI/AdmobWebPluginDelegate.h>

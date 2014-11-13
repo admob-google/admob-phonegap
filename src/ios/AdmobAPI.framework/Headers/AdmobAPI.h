@@ -3,8 +3,6 @@
 #import "GADBannerView.h"
 #import "GADInterstitial.h"
 #import "GADBannerView.h"
-//#import "AdmobFullDelege.h"
-//#import "AdmobBannerController.h"
 #import "AdmobMD5Encoder.h"
 #import "AdmobBase64Encoder.h"
 @class AdmobFullDelege;

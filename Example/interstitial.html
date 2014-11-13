@@ -39,7 +39,7 @@
        alert("load fail: "+message.type+"  "+message.data);
     }
     function onDeviceReady() {
-        admobAd.initInterstitial("ca-app-pub-1738093038576474/2316276747");
+        admobAd.initInterstitial("institial id");
         document.addEventListener(admobAd.AdEvent.onInterstitialReceive, onInterstitialReceive, false);
         document.addEventListener(admobAd.AdEvent.onInterstitialFailedReceive,onReceiveFail, false);
     }
