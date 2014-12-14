@@ -26,6 +26,10 @@ download the plugin ,then install with local location
 ```
 phonegap plugin add c:\phonegap-admob-plugin 
 ```
+use phonegap builder ,add config<br/>
+```
+<gap:plugin name="com.admob.plugin" version="1.0.0" source="plugins.cordova.io"/>
+```
 
 ###show admob banner  at relation position 
 ```
