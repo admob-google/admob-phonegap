@@ -3,8 +3,7 @@
 #import "GADBannerView.h"
 #import "GADInterstitial.h"
 #import "GADBannerView.h"
-#import "AdmobMD5Encoder.h"
-#import "AdmobBase64Encoder.h"
+
 @class AdmobFullDelege;
 @class AdmobBannerController;
 @interface AdmobAPI : NSObject
@@ -15,21 +14,19 @@
 @property(nonatomic,retain) AdmobFullDelege *admobFullDelegete;
 @property(nonatomic,retain) AdmobBannerController *admobController;
 
-@property(nonatomic,copy) NSString *defaultBannerID;
-@property(nonatomic,copy) NSString *defaultInterstitialID;
-@property(nonatomic,copy) NSString *interstitialID;
-@property(nonatomic,assign) BOOL useBaiDuDefaultKey;
+
 
 -(void) fireEvent:(NSString*) eventType withEventData:(NSString*) jsonString;
 
+-(void) initAdmob:(NSString *)bannerID with:(NSString *) instertitialID;
+
+
+
 - (void)hideBanner;
-- (void)showBannerAbsolute:(int) x withY:(int) y;
-- (void)showBanner:(int) position;
-- (void)initBanner:(NSString *)adid withWidth:(int)width withHeight:(int)height ;
-- (void)initInterstitial:(NSString *)adid ;
+- (void)showBannerAbsolute:(int) x withY:(int) y bannerWidth:(int) bwidth bannerHeight:(int) bheight withPara:(NSDictionary *)param;
+- (void)showBanner:(int) position bannerWidth:(int) bwidth bannerHeight:(int) bheight withPara:(NSDictionary *)param;
+
 - (BOOL)isInterstitialReady ;
 - (void)showInterstitial;
-- (void)cacheInterstitial;
-- (NSString*)  netURL;
-- (void) updateKey;
+- (void)cacheInterstitial:(NSDictionary *)param;
 @end

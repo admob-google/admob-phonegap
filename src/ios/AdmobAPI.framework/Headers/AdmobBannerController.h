@@ -11,11 +11,12 @@
     int _targetY;
 }
 @property (nonatomic,retain) GADBannerView *adBanner;
- @property (nonatomic,retain) AdmobAPI* context;
-
+@property (nonatomic,retain) AdmobAPI* context;
++(GADRequest *) createRequest:(NSDictionary*)param;
+-(void) initAdmobBanner:(NSString*)_bannerID;
 -(void) destroyADView;
 -(void) createView:(int) w  withHeight: (int) h andGid:(NSString*) gid;
--(void) showBanner:(int)position ;
--(void) showBannerAbsolute:(int)x withY:(int)y;
+-(void) showBanner:(int)position bannerWidth:(int)bwidth bannerHeight:(int)bheight withPara:(NSDictionary *)param;
+-(void) showBannerAbsolute:(int)x withY:(int)y bannerWidth:(int)bwidth bannerHeight:(int)bheight withPara:(NSDictionary *)param;
 -(void) hideBanner;
 @end
