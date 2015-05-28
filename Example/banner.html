@@ -17,18 +17,18 @@
 <div class="bodyStyle">
     <h1>banner demo</h1>
     <lu>
-        <li><a href="javascript:admobAd.hideBanner();">hiden banner</a></li>
+        <li><a href="javascript:admob.hideBanner();">hiden banner</a></li>
         <br/><br/>
-        <li><a href="javascript:admobAd.showBannerAbsolute(0,100)">show banner absolute</a></li>
+        <li><a href="javascript:admob.showBannerAbsolute(admob.BannerSize.BANNER,0,170)">show banner absolute</a></li>
         <br/><br/>
-        <li><a href="javascript:admobAd.showBanner(admobAd.AD_POSITION.BOTTOM_CENTER)">show banner relation</a></li>
+        <li><a href="javascript:admob. admob.showBanner(admob.BannerSize.SMART_BANNER,admob.Position.TOP_CENTER);">show banner relation</a></li>
     </lu>
 
 </div>
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript">
     function onDeviceReady() {
-        admobAd.initBanner("banner id", admobAd.AD_SIZE.BANNER.width, admobAd.AD_SIZE.BANNER.height);
+        admob.initAdmob("banner ID","interstitial ID");
     }
     document.addEventListener('deviceready',onDeviceReady, false);
 </script>

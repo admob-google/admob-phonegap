@@ -1,5 +1,5 @@
-var admobAd = {
-    AD_POSITION: {
+var admob = {
+    Position: {
         TOP_LEFT: int = 1,
         TOP_CENTER: int = 2,
         TOP_RIGHT: int = 3,
@@ -8,9 +8,11 @@ var admobAd = {
         MIDDLE_RIGHT: int = 6,
         BOTTOM_LEFT: int = 7,
         BOTTOM_CENTER: int = 8,
-        BOTTOM_RIGHT: int = 9
+        BOTTOM_RIGHT: int = 9,
+        TOP_APP:int=10,
+        BOTTOM_APP:int=11
     },
-    AD_SIZE: {
+    BannerSize: {
         BANNER: {width:320,height:50},
         IAB_MRECT:{width:300,height:250},
         IAB_BANNER: {width:468,height:60},
@@ -21,7 +23,7 @@ var admobAd = {
         IPAD_PORTRAIT: {width:769,height:90},
         IPAD_LANDSCAPE: {width:1024,height:90}
     },
-    AdEvent: {
+    Event: {
         onBannerDismiss: "onAdmobBannerDismiss",
         onBannerFailedReceive: "onAdmobBannerFailedReceive",
         onBannerLeaveApplication: "onAdmobBannerLeaveApplication",
@@ -33,16 +35,12 @@ var admobAd = {
         onInterstitialPresent: "onAdmobInterstitialPresent",
         onInterstitialReceive: "onAdmobInterstitialReceive"
     },
-    FunNames: {
-        hideBanner: "admobHideBanner",
-        showBannerAbsolute: "admobShowBannerAbsolute",
-        showBanner: "admobShowBanner",
-        initBanner: "admobInitBanner",
-        initInterstitial: "admobInitInterstitial",
-        isInterstitialReady: "admobIsInterstitialReady",
-        showInterstitial: "admobShowInterstitial",
-        cacheInterstitial: "admobCacheInterstitial",
-        disposePlugin: "disposePlugin"
+    Error:["ERROR_CODE_ERNAL_ERROR","ERROR_CODE_INVALID_REQUEST","ERROR_CODE_NETWORK_ERROR","ERROR_CODE_NO_FILL"],
+    Params:function(){
+      isTesting=false;
+      isForChild=false;
+      gender=0;//0 unknown,1 male,2 female
+      extra={};//key value pair like {'keywork':'admob phonegap','corlor':0xffffff}
     },
     hideBanner: function (successCallback, failureCallback) {
         cordova.exec(
@@ -54,47 +52,36 @@ var admobAd = {
             ]
         );
     },
-    showBannerAbsolute: function (x, y, successCallback, failureCallback) {
+    showBannerAbsolute: function (bannerSize,x, y,param, successCallback, failureCallback) {
         cordova.exec(
             successCallback,
             failureCallback,
             'AdmobPlugin',
             'admobShowBannerAbsolute',
             [
-                {x: x, y: y}
+                {x: x, y: y,bannerWidth:bannerSize.width,bannerHeight:bannerSize.height,param:param}
             ]
         );
     },
-    showBanner: function (position, successCallback, failureCallback) {
+    showBanner: function (bannerSize,position,param, successCallback, failureCallback) {
         cordova.exec(
             successCallback,
             failureCallback,
             'AdmobPlugin',
             'admobShowBanner',
             [
-                position
+                { position:position,bannerWidth:bannerSize.width,bannerHeight:bannerSize.height,param:param}
             ]
         );
     },
-    initBanner: function (appID, width, height, successCallback, failureCallback) {
+    initAdmob: function (bannerID,intertitialID, successCallback, failureCallback) {
         cordova.exec(
             successCallback,
             failureCallback,
             'AdmobPlugin',
-            'admobInitBanner',
+            'admobInitAdmob',
             [
-                {appID: appID, width: width, height: height}
-            ]
-        );
-    },
-    initInterstitial: function (appID, successCallback, failureCallback) {
-        cordova.exec(
-            successCallback,
-            failureCallback,
-            'AdmobPlugin',
-            'admobInitInterstitial',
-            [
-                {appID: appID}
+    {bannerID: bannerID, intertitialID:intertitialID}
             ]
         );
     },
@@ -123,14 +110,14 @@ var admobAd = {
         );
     },
 
-    cacheInterstitial: function (successCallback, failureCallback) {
+    cacheInterstitial: function (param,successCallback, failureCallback) {
         cordova.exec(
             successCallback,
             failureCallback,
             'AdmobPlugin',
             'admobCacheInterstitial',
             [
-
+                param
             ]
         );
     },
@@ -145,4 +132,4 @@ var admobAd = {
             ]);
     }
 };
-module.exports = admobAd;
+module.exports = admob;

@@ -26,9 +26,11 @@
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript">
     function showInterstitial(){
-        admobAd.isInterstitialReady(function(isReady){
+        admob.isInterstitialReady(function(isReady){
             if(isReady){
-                admobAd.showInterstitial();
+                admob.showInterstitial();
+            }else{
+            	alert("need cached before show");
             }
         });
     }
@@ -36,12 +38,16 @@
         alert("onMInterstitialReceive ,you can show it now");
     }
     function onReceiveFail (message) {
-       alert("load fail: "+message.type+"  "+message.data);
+    	var msg=admob.Error[message.data];
+        if(msg==undefined){
+           msg=message.data;
+        }
+       alert("load fail: "+message.type+"  "+msg);
     }
     function onDeviceReady() {
-        admobAd.initInterstitial("institial id");
-        document.addEventListener(admobAd.AdEvent.onInterstitialReceive, onInterstitialReceive, false);
-        document.addEventListener(admobAd.AdEvent.onInterstitialFailedReceive,onReceiveFail, false);
+        admob.initAdmob("banner ID","interstitial ID");
+        document.addEventListener(admob.Event.onInterstitialReceive, onInterstitialReceive, false);
+        document.addEventListener(admob.Event.onInterstitialFailedReceive,onReceiveFail, false);
     }
 
     document.addEventListener('deviceready',onDeviceReady, false);
