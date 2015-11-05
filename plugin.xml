@@ -32,7 +32,7 @@
         </config-file>
         
         <source-file src="src/android/libs/admobadplugin.jar" target-dir="libs/"/>
-        <source-file src="src/android/libs/google-play-services.jar" target-dir="libs/"/>
+        <framework src="com.google.android.gms:play-services:+" />
     </platform>
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
