@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="com.admob.plugin"
-        version="5.2.0">
-    <name>AdmobPlugin</name>
+        id="com-admob-plugin"
+        version="5.5.0">
+    <name>Admob Plugin</name>
     <keywords>ad,admob,google,google-play-service,iad,flurry,device,adwhirl,xdk,jquery,intel appframework,jqmob,cordova,phonegap,ads,html5,js</keywords>
     <description>
-   Google AdMob plugin for Cordova, Phonegap and Intel XDK ,support ios and android,support admob v1 and admob v2 ,Monetize your app with one javascript line.simple and easy to use api.
-    project home:https://github.com/admob-google/admob-phonegap<br/>
+   Google AdMob plugin for Cordova, Phonegap and Intel XDK ,support ios and android,support admob v1 and admob v2 ,Monetize your app with one javascript line.simple and easy to use api.build on admob ios 7.6 and admob android sdk 8
+    project home:https://github.com/admob-google/admob-cordova<br/>
     </description>
     <license>Apache 2.0 License</license>
     <repo>https://github.com/admob-google/admob-cordova</repo>
 	<issue>https://github.com/admob-google/admob-cordova/issues</issue>
-    <js-module src="www/AdmobPlugin.js" name="AdmobAd">
+    <engines>
+        <engine name="cordova" version=">=3.0" />
+    </engines>
+    <js-module src="www/admob.js" name="admob">
         <clobbers target="window.admob"/>
     </js-module>
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="AdmobPlugin" >
+            <feature name="admob" >
                 <param name="android-package" value="com.admob.cordova.plugin.AdmobAdPlugin"/>
             </feature>
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-           <meta-data  android:name="com.google.android.gms.version"   android:value="7327000"/>
+           
 			<activity  android:name="com.google.android.gms.ads.AdActivity"  android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/*">
@@ -32,18 +35,21 @@
         </config-file>
         
         <source-file src="src/android/libs/admobadplugin.jar" target-dir="libs/"/>
-        <source-file src="src/android/libs/google-play-services.jar" target-dir="libs/"/>
+        <source-file src="src/android/libs/play-services-ads-9.4.0.aar" target-dir="libs/"/>
+        <source-file src="src/android/libs/play-services-ads-lite-9.4.0.aar" target-dir="libs/"/>
+        <source-file src="src/android/libs/play-services-base-9.4.0.aar" target-dir="libs/"/>
+        <source-file src="src/android/libs/play-services-basement-9.4.0.aar" target-dir="libs/"/>
     </platform>
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="AdmobPlugin">
+            <feature name="admob">
                 <param name="ios-package" value="AdmobAdPlugin"/>
             </feature>
         </config-file>
         <source-file  src="src/ios/AdmobAdPlugin.m"/>
         <header-file  src="src/ios/AdmobAdPlugin.h"/>
- <framework src="src/ios/AdmobAPI.framework" custom="true"/>
-	<framework src="EventKit.framework"/>
+        <framework src="src/ios/AdmobAPI.framework" custom="true"/>
+	    <framework src="EventKit.framework"/>
         <framework src="EventKitUI.framework"/>
         <framework src="StoreKit.framework"/>
         <framework src="AdSupport.framework"/>
@@ -54,5 +60,9 @@
         <framework src="CoreGraphics.framework"/>
         <framework src="SystemConfiguration.framework"/>
         <framework src="AudioToolbox.framework"/>
+        <framework src="MediaPlayer.framework"/>
+        <framework src="GLKit.framework"/>
+        <framework src="SafariServices.framework"/>
+        <framework src="CoreMotion.framework"/>
     </platform>
 </plugin>

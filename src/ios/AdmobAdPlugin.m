@@ -1,7 +1,7 @@
 
 #import "AdmobAdPlugin.h"
 #import <AdmobAPI/AdmobAPI.h>
-#import <AdmobAPI/AdmobBannerController.h>
+//#import <AdmobAPI/AdmobBannerController.h>
 #import <UIKit/UIKit.h>
 @implementation AdmobAdPlugin
 @synthesize admobAPI;
@@ -10,9 +10,11 @@
 -(void) fireEvent:(NSString*) eventType withEventData:(NSString*) jsonData{
     NSString *js =@"cordova.fireDocumentEvent('%@',{ 'data': '%@' });";
     NSString *json=[NSString stringWithFormat:js,eventType,jsonData];
-    [self writeJavascript:json];
+   //[self writeJavascript:json];
+    [[self commandDelegate ]evalJs:json];
 }
 #pragma mark   CDVPlugin Function------------------
+/*
 - (CDVPlugin *)initWithWebView:(UIWebView *)theWebView {
     self = (AdmobAdPlugin *)[super initWithWebView:theWebView];
     if (self) {
@@ -21,11 +23,17 @@
     }
     return self;
 }
+ */
+- (void)pluginInitialize
+{
+    admobAPI=[[AdmobAPI alloc] init];
+    admobAPI.plugin=self;
+}
 
 -(void) updateWebView:(int)position bannerWidth:(int) bwidth bannerHeight:(int) bheight{
     if(!(position<=9&&lastPosition<=9)&&position!=lastPosition){
         lastPosition=position;
-        CGRect adFrame=admobAPI.admobController.adBanner.frame;//.frame;
+        CGRect adFrame=[admobAPI bannerFrame];//.frame;
         CGRect webFrame=[self.webView frame];
       
         if(srcFrame.size.height==0){
@@ -42,7 +50,8 @@
             webFrame.origin.y= srcFrame.origin.y;
         }
         self.webView.frame=webFrame;
-        
+        NSString* js=@"window.scrollBy(1, 20); window.scrollBy(-1, -20);";
+        [[self commandDelegate ]evalJs:js];
         //[self.webView reload];//reload can fix banner over webview problem,but will reload the page.
         
         //transform can fix banner over webview problem too 
@@ -57,10 +66,16 @@
 }
 - (void)admobShowBannerAbsolute:(CDVInvokedUrlCommand *)command {
     NSDictionary *params = [command argumentAtIndex:0];
-    int adx=(int)[params integerValueForKey:@"x" defaultValue:0];
+    /*int adx=(int)[params integerValueForKey:@"x" defaultValue:0];
     int ady=(int)[params integerValueForKey:@"y" defaultValue:0];
     int width= (int)[params integerValueForKey:@"bannerWidth" defaultValue:0];
     int height=(int) [params integerValueForKey:@"bannerHeight" defaultValue:0];
+    */
+    int adx=(int) [[params objectForKey:@"x"] integerValue];
+    int ady=(int) [[params objectForKey:@"y"] integerValue];
+    int width= (int)[[params objectForKey:@"bannerWidth"] integerValue];
+    int height=(int) [[params objectForKey:@"bannerHeight"] integerValue];
+    
     NSDictionary *extra=[params objectForKey:@"param"];
     
     [admobAPI showBannerAbsolute:adx withY:ady bannerWidth:width bannerHeight:height withPara:extra];

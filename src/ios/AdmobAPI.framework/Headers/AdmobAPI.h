@@ -1,20 +1,10 @@
 #import <Foundation/Foundation.h>
 #import "AdmobWebPluginDelegate.h"
-#import "GADBannerView.h"
-#import "GADInterstitial.h"
-#import "GADBannerView.h"
-
+#import <UIKit/UIKit.h>
 @class AdmobFullDelege;
 @class AdmobBannerController;
 @interface AdmobAPI : NSObject
 @property(nonatomic,retain) id<AdmobWebPluginDelegate> plugin;
-
-
-@property(nonatomic,retain) GADInterstitial *admobInterstial;
-@property(nonatomic,retain) AdmobFullDelege *admobFullDelegete;
-@property(nonatomic,retain) AdmobBannerController *admobController;
-
-
 
 -(void) fireEvent:(NSString*) eventType withEventData:(NSString*) jsonString;
 
@@ -29,4 +19,5 @@
 - (BOOL)isInterstitialReady ;
 - (void)showInterstitial;
 - (void)cacheInterstitial:(NSDictionary *)param;
+- (CGRect) bannerFrame;
 @end
